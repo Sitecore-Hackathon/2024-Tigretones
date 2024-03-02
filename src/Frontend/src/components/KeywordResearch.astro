@@ -1,21 +1,26 @@
 ---
+import { data } from '../Api/request.js';
 
+const previousKeywords = data.sitecore.route.fields['Keywords Previous'].value;
+const keywords = data.sitecore.route.fields.Keywords.value;
 ---
 
 <section class="flex flex-col border border-gray-300 rounded-3xl justify-center height-fit">
-  <h2 class="text-center py-4 border-b border-gray-200 font-bold capitalize text-lg">Keyword Research</h2>
+  <h2 class="text-center py-4 border-b border-gray-200 font-bold capitalize text-lg">Previous Keyword Research</h2>
   <div class="flex flex-col">
-    <div class="border-b border-gray-200 p-4 flex flex-col">
-      <span class="font-bold capitalize mb-3">high-volume keywords:</span>
-      <p>Lorem, ipsum, dolor</p>
-    </div>
-    <div class="border-b border-gray-200 p-4 flex flex-col">
-      <span class="font-bold capitalize mb-3">long-tail keywords:</span>
-      <p>Lorem ipsum dolor sit., Lorem ipsum dolor sit., Lorem ipsum dolor sit.</p>
-    </div>
     <div class="p-4 flex flex-col">
-      <span class="font-bold capitalize mb-3">location specific keywords:</span>
-      <p>Lorem, ipsum., Lorem, ipsum dolor., Lorem.</p>
+      <span class="font-bold capitalize mb-3">high-volume keywords:</span>
+      <p>{previousKeywords}</p>
+    </div>
+  </div>
+</section>
+
+<section class="flex flex-col border border-gray-300 rounded-3xl justify-center height-fit">
+  <h2 class="text-center py-4 border-b border-gray-200 font-bold capitalize text-lg">Enhanced Keyword Research</h2>
+  <div class="flex flex-col">
+    <div class="p-4 flex flex-col">
+      <span class="font-bold capitalize mb-3">high-volume keywords:</span>
+      <p>{keywords}</p>
     </div>
   </div>
 </section>

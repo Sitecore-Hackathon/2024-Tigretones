@@ -11,4 +11,10 @@ html {
     .font-title {
         font-family: "Sora", sans-serif;
     }
+    .color-primary {
+        color: #ce27af;
+    }
+    .bg-primary {
+        background-color: #ce27af;
+    }
 }

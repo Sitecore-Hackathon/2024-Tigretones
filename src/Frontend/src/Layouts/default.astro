@@ -1,14 +1,10 @@
 ---
 import '../styles.css';
+import { data } from '../Api/request.js';
 
-const response = await fetch('https://hackathon2024sc.dev.local/sitecore/api/layout/render?item=/&sc_apikey={C8733B5B-20E1-418E-8F23-221691031882}', {
-  method: 'GET',
-  headers: {'Content-Type':'application/json'},
-});
-const data = await response.json();
-console.log('🚀 ~ data:', data);
-const metaDescription = '<meta name=\"description\" content=\"2Discover the history and evolution of artificial intelligence (AI), from its origins to modern applications like ChatGPT and self-driving cars. Explore the principles behind AI technology and the pursuit of artificial general intelligence (AGI), a hypothetical concept that aims to match human intellect.\" >';
-const metaTitle = 'SEO Report';
+const metaDescription = data.sitecore.route.fields['Meta Description'].value;
+const titleTag = data.sitecore.route.fields['Title Tag'].value;
+const keywords = data.sitecore.route.fields['Keywords'].value;
 ---
 
 <html lang="en">
@@ -20,15 +16,14 @@ const metaTitle = 'SEO Report';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap" rel="stylesheet">
-		<title>{metaTitle}</title>
-    <Fragment set:html={metaDescription}>
+    <Fragment set:html={metaDescription + titleTag + keywords}>
 	</head>
 	<body class="bg-black">
     <head>
       <slot name="header" />
     </head>
 		<slot />
-    <footer>
+    <footer class="mt-10">
       <p class="text-center">Sitecore &copy;</p>
     </footer>
 	</body>

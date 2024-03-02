@@ -2,6 +2,6 @@
 {
     public interface IHtmlTagHelper
     {
-        string GetHtmlTag(RequestType type, string? input);
+        string GetHtmlTag(RequestType? type, string? input);
     }
 }

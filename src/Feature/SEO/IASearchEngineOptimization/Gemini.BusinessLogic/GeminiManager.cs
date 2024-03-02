@@ -1,6 +1,7 @@
 ﻿using Hackaton.AI.SEO.Models;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using System.Reflection;
 using System.Text;
 
 namespace Hackaton.AI.SEO.BusinessLogic
@@ -45,14 +46,10 @@ namespace Hackaton.AI.SEO.BusinessLogic
             foreach (var geminiResponse in geminiResponses)
             {
                 var generatedText = geminiResponse?.Item2?.candidates?.FirstOrDefault()?.content?.parts?.FirstOrDefault()?.text;
-
-                switch (geminiResponse?.Item1)
-                {
-                    case RequestType.Title: apiResponse.TitleTag = _HtmlTagHelper.GetHtmlTag(RequestType.Title, generatedText); break;
-                    case RequestType.MetaDescription: apiResponse.MetaDescriptionTag = _HtmlTagHelper.GetHtmlTag(RequestType.MetaDescription, generatedText); break;
-                    case RequestType.Keywords: apiResponse.KeywordsTag = _HtmlTagHelper.GetHtmlTag(RequestType.Keywords, generatedText); break;
-                    default: break;
-                }
+                PropertyInfo? prop = apiResponse.GetType().GetProperty($"{geminiResponse?.Item1}Tag");
+                
+                if (prop != null && prop.CanWrite)
+                    prop.SetValue(apiResponse, _HtmlTagHelper.GetHtmlTag(geminiResponse?.Item1, generatedText), null);
             }
 
             return apiResponse;
@@ -64,7 +61,7 @@ namespace Hackaton.AI.SEO.BusinessLogic
             var json = JsonConvert.SerializeObject(request);
 
             // API endpoint URL
-            string apiUrl = $"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={_Configuration["Gemini:ApiKey"]}";
+            string apiUrl = $"{_Configuration["Gemini:Uri"]}?key={_Configuration["Gemini:ApiKey"]}";
 
 
             var content = new StringContent(json, Encoding.UTF8, "application/json");

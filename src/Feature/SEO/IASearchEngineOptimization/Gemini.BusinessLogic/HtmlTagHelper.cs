@@ -2,7 +2,7 @@
 {
     public class HtmlTagHelper : IHtmlTagHelper
     {
-        public string GetHtmlTag(RequestType type, string? input)
+        public string GetHtmlTag(RequestType? type, string? input)
         {
             if (string.IsNullOrWhiteSpace(input))
                 return string.Empty;

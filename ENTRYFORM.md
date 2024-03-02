@@ -9,7 +9,7 @@
 ## Module Name: AI-Powered SEO Optimization Tool for Sitecore
 
 ## Description
-⟹ AI-Powered SEO Optimization Tool is a Sitecore module that leverages AI algorithms to optimize website content for search engines. The tool could analyze pages content, identify keywords, meta tags, and suggest improvements to enhance SEO performance.
+AI-Powered SEO Optimization Tool is a Sitecore module that leverages AI algorithms to optimize website content for search engines. The tool could analyze pages content, identify keywords, meta tags, and suggest improvements to enhance SEO performance.
 
 ## Module Purpose
 The AI-Powered SEO Optimization Tool for Sitecore is designed to streamline and enhance the process of optimizing website content for search engines. By integrating AI algorithms and leveraging Google's Gemini API through a .NET Core middleware, the module provides Sitecore users with advanced capabilities to improve their website's search engine visibility and drive organic traffic.

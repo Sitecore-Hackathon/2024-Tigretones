@@ -111,3 +111,7 @@ The next steps explains a sample of how to use the tool Title Tag, Meta Descript
 4. The old data was stored in the Title Tag Previous Field.
 
 ![Step 4](docs/images/03.png?raw=true "Step 4")
+
+5. Changes are visible on Dashboard
+
+![Dashboard](docs/images/Dashboard.png?raw=true "Dashboard")

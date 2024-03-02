@@ -14,6 +14,13 @@ namespace Hackaton.AI.SEO.BusinessLogic
 
     public class GeminiManager : IGeminiManager
     {
+        private readonly IHttpClientWrapper _HttpClient;
+
+        public GeminiManager(IHttpClientWrapper httpClient)
+        {
+            _HttpClient = httpClient;
+        }
+
         #region Public Methods
 
         public List<Tuple<RequestType, GeminiRequest>> ParseRequest(ApiRequest originalRequest)
@@ -55,13 +62,11 @@ namespace Hackaton.AI.SEO.BusinessLogic
             // API endpoint URL
             string apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyCYoIyYnd9UkKxaFsGc4anVrcZLjxvKcSM";
 
-            // Create HttpClient instance
-            var client = new HttpClient();
 
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             // Send the request and get the response
-            return Tuple.Create(type, client != null ? await client.PostAsync(apiUrl, content) : null);
+            return Tuple.Create(type, _HttpClient != null ? await _HttpClient.PostAsync(apiUrl, content) : null);
         }
 
         #endregion

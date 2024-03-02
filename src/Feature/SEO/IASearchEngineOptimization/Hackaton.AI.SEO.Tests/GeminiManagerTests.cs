@@ -2,6 +2,7 @@ using Moq;
 using Hackaton.AI.SEO.Models;
 using Hackaton.AI.SEO.BusinessLogic;
 using Hackaton.AI.SEO.BusinessLogic.Extensions;
+using Microsoft.Extensions.Configuration;
 
 namespace Hackaton.AI.SEO.Tests
 {
@@ -22,11 +23,12 @@ namespace Hackaton.AI.SEO.Tests
                 Content = "content"
             };
 
+            var mockConfiguration = new Mock<IConfiguration>();
             var mockHttpClient = new Mock<IHttpClientWrapper>();
             mockHttpClient.Setup(x => x.PostAsync(It.IsAny<string?>(), It.IsAny<HttpContent?>()))
                 .Returns(Task.FromResult(new HttpResponseMessage()));
 
-            var manager = new GeminiManager(mockHttpClient.Object);
+            var manager = new GeminiManager(mockConfiguration.Object, mockHttpClient.Object);
 
             // Act
             var result = manager.ParseRequest(originalRequest);
@@ -57,11 +59,12 @@ namespace Hackaton.AI.SEO.Tests
             var type = RequestType.Title;
             var request = new GeminiRequest();
 
+            var mockConfiguration = new Mock<IConfiguration>();
             var mockHttpClient = new Mock<IHttpClientWrapper>();
             mockHttpClient.Setup(x => x.PostAsync(It.IsAny<string?>(), It.IsAny<HttpContent?>()))
                 .Returns(Task.FromResult(new HttpResponseMessage()));
 
-            var manager = new GeminiManager(mockHttpClient.Object);
+            var manager = new GeminiManager(mockConfiguration.Object, mockHttpClient.Object);
 
             // Act
             var result = await manager.SendRequest(type, request);
@@ -128,11 +131,12 @@ namespace Hackaton.AI.SEO.Tests
                 })
             };
 
+            var mockConfiguration = new Mock<IConfiguration>();
             var mockHttpClient = new Mock<IHttpClientWrapper>();
             mockHttpClient.Setup(x => x.PostAsync(It.IsAny<string?>(), It.IsAny<HttpContent?>()))
                 .Returns(Task.FromResult(new HttpResponseMessage()));
 
-            var manager = new GeminiManager(mockHttpClient.Object);
+            var manager = new GeminiManager(mockConfiguration.Object, mockHttpClient.Object);
 
             // Act
             var result = manager.ParseResponse(geminiResponses);

@@ -1,5 +1,6 @@
 ﻿using Hackaton.AI.SEO.BusinessLogic.Extensions;
 using Hackaton.AI.SEO.Models;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -14,10 +15,12 @@ namespace Hackaton.AI.SEO.BusinessLogic
 
     public class GeminiManager : IGeminiManager
     {
+        private readonly IConfiguration _Configuration;
         private readonly IHttpClientWrapper _HttpClient;
 
-        public GeminiManager(IHttpClientWrapper httpClient)
+        public GeminiManager(IConfiguration configuration, IHttpClientWrapper httpClient)
         {
+            _Configuration = configuration;
             _HttpClient = httpClient;
         }
 
@@ -60,7 +63,7 @@ namespace Hackaton.AI.SEO.BusinessLogic
             var json = JsonConvert.SerializeObject(request);
 
             // API endpoint URL
-            string apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyCYoIyYnd9UkKxaFsGc4anVrcZLjxvKcSM";
+            string apiUrl = $"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={_Configuration["Gemini:ApiKey"]}";
 
 
             var content = new StringContent(json, Encoding.UTF8, "application/json");

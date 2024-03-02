@@ -63,7 +63,6 @@ namespace Hackaton.AI.SEO.BusinessLogic
             // API endpoint URL
             string apiUrl = $"{_Configuration["Gemini:Uri"]}?key={_Configuration["Gemini:ApiKey"]}";
 
-
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             // Send the request and get the response

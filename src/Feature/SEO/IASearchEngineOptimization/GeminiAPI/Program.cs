@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IHttpClientWrapper, HttpClientWrapper>();
+builder.Services.AddSingleton<IHtmlTagHelper, HtmlTagHelper>();
 builder.Services.AddSingleton<IGeminiManager, GeminiManager>();
 
 var app = builder.Build();

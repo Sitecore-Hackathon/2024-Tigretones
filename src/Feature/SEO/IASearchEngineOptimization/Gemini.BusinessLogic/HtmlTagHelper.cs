@@ -1,25 +1,26 @@
-﻿using System.Web;
-
-namespace Hackaton.AI.SEO.BusinessLogic.Extensions
+﻿namespace Hackaton.AI.SEO.BusinessLogic
 {
-    public static class StringExtensions
+    public class HtmlTagHelper : IHtmlTagHelper
     {
-        public static string GetHtmlTag(this string input, RequestType type)
+        public string GetHtmlTag(RequestType type, string? input)
         {
-            switch(type)
+            if (string.IsNullOrWhiteSpace(input))
+                return string.Empty;
+
+            switch (type)
             {
                 case RequestType.Title:
                     var titleTag = input[input.IndexOf("<title>")..];
                     int titleEndIndex = titleTag.IndexOf("</title>");
                     return titleTag[..(titleEndIndex + "</title>".Length)];
                 case RequestType.MetaDescription:
-                case RequestType.Keywords: 
+                case RequestType.Keywords:
                     var metaTag = input[input.IndexOf("<meta")..];
                     int metaEndIndex = metaTag.IndexOf("/>");
                     if (metaEndIndex == -1)
                         metaEndIndex = metaTag.IndexOf(">");
                     return metaTag[..(metaEndIndex)] + ">";
-                default: 
+                default:
                     return string.Empty;
             }
         }

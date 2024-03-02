@@ -1,5 +1,4 @@
-﻿using Hackaton.AI.SEO.BusinessLogic.Extensions;
-using Hackaton.AI.SEO.Models;
+﻿using Hackaton.AI.SEO.Models;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Text;
@@ -17,11 +16,13 @@ namespace Hackaton.AI.SEO.BusinessLogic
     {
         private readonly IConfiguration _Configuration;
         private readonly IHttpClientWrapper _HttpClient;
+        private readonly IHtmlTagHelper _HtmlTagHelper;
 
-        public GeminiManager(IConfiguration configuration, IHttpClientWrapper httpClient)
+        public GeminiManager(IConfiguration configuration, IHttpClientWrapper httpClient, IHtmlTagHelper htmlTagHelper)
         {
             _Configuration = configuration;
             _HttpClient = httpClient;
+            _HtmlTagHelper = htmlTagHelper;
         }
 
         #region Public Methods
@@ -47,9 +48,9 @@ namespace Hackaton.AI.SEO.BusinessLogic
 
                 switch (geminiResponse?.Item1)
                 {
-                    case RequestType.Title: apiResponse.TitleTag = generatedText?.GetHtmlTag(RequestType.Title); break;
-                    case RequestType.MetaDescription: apiResponse.MetaDescriptionTag = generatedText?.GetHtmlTag(RequestType.MetaDescription); break;
-                    case RequestType.Keywords: apiResponse.KeywordsTag = generatedText?.GetHtmlTag(RequestType.Keywords); break;
+                    case RequestType.Title: apiResponse.TitleTag = _HtmlTagHelper.GetHtmlTag(RequestType.Title, generatedText); break;
+                    case RequestType.MetaDescription: apiResponse.MetaDescriptionTag = _HtmlTagHelper.GetHtmlTag(RequestType.MetaDescription, generatedText); break;
+                    case RequestType.Keywords: apiResponse.KeywordsTag = _HtmlTagHelper.GetHtmlTag(RequestType.Keywords, generatedText); break;
                     default: break;
                 }
             }

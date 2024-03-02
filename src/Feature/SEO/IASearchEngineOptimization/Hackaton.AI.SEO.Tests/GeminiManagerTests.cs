@@ -1,7 +1,6 @@
 using Moq;
 using Hackaton.AI.SEO.Models;
 using Hackaton.AI.SEO.BusinessLogic;
-using Hackaton.AI.SEO.BusinessLogic.Extensions;
 using Microsoft.Extensions.Configuration;
 
 namespace Hackaton.AI.SEO.Tests
@@ -28,7 +27,7 @@ namespace Hackaton.AI.SEO.Tests
             mockHttpClient.Setup(x => x.PostAsync(It.IsAny<string?>(), It.IsAny<HttpContent?>()))
                 .Returns(Task.FromResult(new HttpResponseMessage()));
 
-            var manager = new GeminiManager(mockConfiguration.Object, mockHttpClient.Object);
+            var manager = new GeminiManager(mockConfiguration.Object, mockHttpClient.Object, new HtmlTagHelper());
 
             // Act
             var result = manager.ParseRequest(originalRequest);
@@ -64,7 +63,7 @@ namespace Hackaton.AI.SEO.Tests
             mockHttpClient.Setup(x => x.PostAsync(It.IsAny<string?>(), It.IsAny<HttpContent?>()))
                 .Returns(Task.FromResult(new HttpResponseMessage()));
 
-            var manager = new GeminiManager(mockConfiguration.Object, mockHttpClient.Object);
+            var manager = new GeminiManager(mockConfiguration.Object, mockHttpClient.Object, new HtmlTagHelper());
 
             // Act
             var result = await manager.SendRequest(type, request);
@@ -136,15 +135,16 @@ namespace Hackaton.AI.SEO.Tests
             mockHttpClient.Setup(x => x.PostAsync(It.IsAny<string?>(), It.IsAny<HttpContent?>()))
                 .Returns(Task.FromResult(new HttpResponseMessage()));
 
-            var manager = new GeminiManager(mockConfiguration.Object, mockHttpClient.Object);
+            var htmlTagHelper = new HtmlTagHelper();
+            var manager = new GeminiManager(mockConfiguration.Object, mockHttpClient.Object, htmlTagHelper);
 
             // Act
             var result = manager.ParseResponse(geminiResponses);
 
             // Assert
-            Assert.Equal("<title>generated title</title>e".GetHtmlTag(RequestType.Title), result.TitleTag);
-            Assert.Equal("<meta name=\"description\">".GetHtmlTag(RequestType.MetaDescription), result.MetaDescriptionTag);
-            Assert.Equal("<meta name=\"keywords\">".GetHtmlTag(RequestType.Keywords), result.KeywordsTag);
+            Assert.Equal(htmlTagHelper.GetHtmlTag(RequestType.Title, "<title>generated title</title>"), result.TitleTag);
+            Assert.Equal(htmlTagHelper.GetHtmlTag(RequestType.MetaDescription, "<meta name=\"description\">"), result.MetaDescriptionTag);
+            Assert.Equal(htmlTagHelper.GetHtmlTag(RequestType.Keywords, "<meta name=\"keywords\">"), result.KeywordsTag);
         }
     }
 }

@@ -30,9 +30,8 @@ Key features of the module include:
 Overall, the AI-Powered SEO Optimization Tool empowers Sitecore users to enhance their website's SEO performance, increase organic traffic, and improve their visibility in search engine results pages, ultimately driving business growth and success.
 
 ## Video link
-⟹ Provide a video highlighing your Hackathon module submission and provide a link to the video. You can use any video hosting, file share or even upload the video to this repository. _Just remember to update the link below_
 
-⟹ [Replace this Video link](#video-link)
+⟹ [Demo video](https://youtu.be/7AYWwRQK4x4?si=5Tbh33oUm_LMAUmm)
 
 ## Pre-requisites and Dependencies
 

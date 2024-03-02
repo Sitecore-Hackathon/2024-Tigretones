@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeminiAPI", "GeminiAPI\GeminiAPI.csproj", "{6FABF20E-A36C-4852-A1CA-5A9C0B721B59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackaton.AI.SEO.API", "GeminiAPI\Hackaton.AI.SEO.API.csproj", "{6FABF20E-A36C-4852-A1CA-5A9C0B721B59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackaton.AI.SEO.BusinessLogic", "Gemini.BusinessLogic\Hackaton.AI.SEO.BusinessLogic.csproj", "{D040BEC8-CAF8-4086-BB90-744CD7A73063}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackaton.AI.SEO.Models", "Hackaton.AI.SEO.Models\Hackaton.AI.SEO.Models.csproj", "{90ABE5E3-1A32-4337-B0B2-83ED02E91EE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{6FABF20E-A36C-4852-A1CA-5A9C0B721B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FABF20E-A36C-4852-A1CA-5A9C0B721B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FABF20E-A36C-4852-A1CA-5A9C0B721B59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D040BEC8-CAF8-4086-BB90-744CD7A73063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D040BEC8-CAF8-4086-BB90-744CD7A73063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D040BEC8-CAF8-4086-BB90-744CD7A73063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D040BEC8-CAF8-4086-BB90-744CD7A73063}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90ABE5E3-1A32-4337-B0B2-83ED02E91EE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90ABE5E3-1A32-4337-B0B2-83ED02E91EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90ABE5E3-1A32-4337-B0B2-83ED02E91EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90ABE5E3-1A32-4337-B0B2-83ED02E91EE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

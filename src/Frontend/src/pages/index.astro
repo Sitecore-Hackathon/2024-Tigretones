@@ -1,0 +1,19 @@
+---
+import MainLayout from '../Layouts/default.astro';
+import KeywodResearch from '../components/KeywordResearch.astro';
+import OnPageOptimization from '../components/OnPageOptimization.astro';
+import OffPageOptimization from '../components/OffPageOptimization.astro';
+import TechnicalSEO from '../components/TechnicalSEO.astro';
+import Charts from '../components/Charts.astro';
+---
+
+<MainLayout>
+	<h1 class="text-4xl text-center mt-16 mb-20 font-title" slot="header">SEO REPORT</h1>
+	<main class="grid grid-cols-3 grid-flow-row gap-5 container mx-auto items-end">
+		<TechnicalSEO />
+		<KeywodResearch />
+		<OffPageOptimization />
+		<OnPageOptimization />
+		<Charts />
+	</main>
+</MainLayout>

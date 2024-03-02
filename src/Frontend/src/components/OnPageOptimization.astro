@@ -1,0 +1,57 @@
+---
+// import { data } from '../Api/data.js';
+
+const header1 = '<h1>Lorem, ipsum.</h1>'
+const header2 = '<h2>Lorem, ipsum dolor.</h2>'
+const header3 = '<h3>Lorem ipsum dolor sit.</h3>'
+const meta1 = '<title>10 Most Important Meta Tags You Need to Know for SEO</title>';
+const meta2 = '<meta name="description" content="Some tags are vital for SEO. Others have little or no impact on rankings. Here\'s every type of meta tag you need to know about.The purpose of a meta description is to reflect the essence of a page, but with more details and context." />';
+const meta3 = '<meta property="og:type" content="video.movie" />';
+const imageTag = '<img src="..." alt="descriptive text" />';
+const linkTag = '<a src="relevant_related_site"></a>';
+---
+
+<section class="flex flex-col border border-gray-300 rounded-3xl justify-center height-fit">
+  <h2 class="text-center py-4 border-b border-gray-200 font-bold capitalize text-lg">On-Page Optimization</h2>
+  <div class="flex flex-col">
+    <div class="border-b border-gray-200 p-4 flex flex-col">
+      <span class="font-bold capitalize mb-3">Title Tags:</span>
+      <p>
+        Clearly describe the content of each page (ideally include your main keyword).
+      </p>
+      <code class="mt-5">{meta1}</code>
+    </div>
+    <div class="border-b border-gray-200 p-4 flex flex-col">
+      <span class="font-bold capitalize mb-3">Meta Descriptions:</span>
+      <p>
+        Write a compelling summary to boost click-through rates in search results.
+      </p>
+      <code class="mt-5">{meta1}</code>
+      <code class="mt-2">{meta2}</code>
+      <code class="mt-2">{meta3}</code>
+    </div>
+    <div class="border-b border-gray-200 p-4 flex flex-col">
+      <span class="font-bold capitalize mb-3">Content Structure:</span>
+      <p>
+        Use headers (H1, H2, etc.) to organize your text logically.
+      </p>
+      <code class="mt-5">{header1}</code>
+      <code class="mt-2">{header2}</code>
+      <code class="mt-2">{header3}</code>
+    </div>
+    <div class="border-b border-gray-200 p-4 flex flex-col">
+      <span class="font-bold capitalize mb-3">Image optimization:</span>
+      <p>Use descriptive filenames for images and include alt text (describing the image for visually impaired users and search engines).</p>
+      <code class="mt-5">{imageTag}</code>
+    </div>
+    <div class="p-4 flex flex-col">
+      <span class="font-bold capitalize mb-3">Internal Linking:</span>
+      <p>Strategically link between related pages on your site.</p>
+      <code class="mt-5">{linkTag}</code>
+    </div>
+  </div>
+</section>
+
+<p>
+  <!-- {data} -->
+</p>

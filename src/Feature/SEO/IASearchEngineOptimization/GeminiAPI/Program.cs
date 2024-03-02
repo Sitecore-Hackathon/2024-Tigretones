@@ -2,10 +2,7 @@ using Hackaton.AI.SEO.BusinessLogic;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//builder.WebHost.UseUrls("http://192.168.140.131:5001/");
-
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

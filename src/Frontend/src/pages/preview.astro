@@ -1,8 +1,6 @@
 ---
 import { data } from '../Api/request.js';
 import MainLayout from '../Layouts/default.astro';
-
-console.log('🚀 ~ data:', data.sitecore.route.fields);
 ---
 
 <MainLayout>
@@ -11,6 +9,6 @@ console.log('🚀 ~ data:', data.sitecore.route.fields);
   </div>
   <main class="container mx-auto">
     <h1 class="text-center text-4xl mt-16 mb-20 font-title uppercase">{data.sitecore.route.fields.Title.value}</h1>
-    <p>{data.sitecore.route.fields.Content.value}</p>
+    <Fragment set:html={data.sitecore.route.fields.Content.value} />
   </main>
 </MainLayout>
